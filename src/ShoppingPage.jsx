@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Products from './Products';
 
 const ShoppingPage = () => {
   return (
@@ -7,7 +8,7 @@ const ShoppingPage = () => {
         <ul>
           <li>Logo</li>
           <li>
-            <input type="search" />
+            <input type="search" name="search" />
           </li>
           <li>
             <Link to={'/'}>Home</Link>
@@ -19,9 +20,7 @@ const ShoppingPage = () => {
         </ul>
       </nav>
       <main>
-        <p>Item1</p>
-        <p>Item2</p>
-        <p>Item3</p>
+        <Products />
       </main>
       <footer>
         <div>
