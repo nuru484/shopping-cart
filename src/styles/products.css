@@ -1,0 +1,40 @@
+.loading,
+.error-message {
+  color: red;
+  font-size: 16px;
+  text-align: center;
+  padding: 20px;
+}
+
+.back-button {
+  padding: 10px 20px;
+  background-color: #f0f0f0;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.product-list {
+  padding: 20px;
+}
+
+#product-list-heading {
+  color: #333;
+}
+
+.products {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.product-item {
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}

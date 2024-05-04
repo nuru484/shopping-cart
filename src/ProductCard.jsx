@@ -1,32 +1,52 @@
+import '../src/styles/productCard.css';
+
 const ProductCard = ({ product }) => {
   return (
-    <>
-      <div>
-        <img src={product.image} alt={product.description} width={'100px'} />
-        <h1>{product.title}</h1>
-        <p>{product.price}</p>
-      </div>
-    </>
+    <div className="product-card" id={`product-card-${product.id}`}>
+      <span>
+        <img
+          src={product.image}
+          alt={product.description}
+          width="100px"
+          className="product-image"
+        />
+      </span>
+
+      <h1 className="product-title">{product.title}</h1>
+      <p className="product-price">${product.price}</p>
+    </div>
   );
 };
 
 const ProductCardDetails = ({ product }) => {
   return (
-    <>
-      <div>
-        <img src={product.image} alt={product.description} width={'100px'} />
+    <div className="product-details" id={`product-details-${product.id}`}>
+      <div className="product-image-wrapper">
+        <img
+          src={product.image}
+          alt={product.description}
+          width="100px"
+          className="product-image"
+        />
       </div>
-      <div>
-        <h1>{product.title}</h1>
-        <p>{product.price}</p>
-        <div>
-          <button>Decrease</button>
-          <input type="number" name="counter" min="0" max="10" step="1" />
-          <button>Increase</button>
+      <div className="product-info">
+        <h1 className="product-title">{product.title}</h1>
+        <p className="product-price">${product.price}</p>
+        <div className="product-quantity">
+          <button className="quantity-decrease">Decrease</button>
+          <input
+            type="number"
+            name="counter"
+            min="0"
+            max="10"
+            step="1"
+            className="quantity-input"
+          />
+          <button className="quantity-increase">Increase</button>
         </div>
-        <button>Add To Cart</button>
+        <button className="add-to-cart">Add To Cart</button>
       </div>
-    </>
+    </div>
   );
 };
 

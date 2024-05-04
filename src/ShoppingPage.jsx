@@ -4,31 +4,47 @@ import Products from './Products';
 const ShoppingPage = () => {
   return (
     <div>
-      <nav>
-        <ul>
-          <li>Logo</li>
-          <li>
-            <input type="search" name="search" />
+      <nav className="main-nav">
+        <ul className="nav-list">
+          <li className="nav-item logo">SHOPTEST</li>
+          <li className="nav-item">
+            <input
+              type="search"
+              name="search"
+              id="search-input"
+              className="search-box"
+              placeholder="Search products..."
+            />
           </li>
-          <li>
-            <Link to={'/'}>Home</Link>
-          </li>
-          <li>
-            <Link to={'/shopping-page'}>Shop</Link>
-          </li>
-          <li>Cart</li>
+          <div>
+            <li className="nav-item">
+              <Link to={'/'} className="nav-link">
+                Home
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={'/shopping-page'} className="nav-link">
+                Shop
+              </Link>
+            </li>
+            <li className="nav-item cart">Cart</li>
+          </div>
         </ul>
       </nav>
-      <main>
+      <main className="shop-main">
         <Products />
       </main>
-      <footer>
-        <div>
-          <p>Company Name</p>
-          <p>&copy; 2024 Abdul-Majeed Nurudeen. All rights reserved.</p>
+      <footer className="main-footer">
+        <div className="footer-content">
+          <p className="company-name">Company Name</p>
+          <p className="copyright">
+            &copy; 2024 Abdul-Majeed Nurudeen. All rights reserved.
+          </p>
         </div>
-        <div>
-          <a href="https://github.com/nuru484">Source Code</a>
+        <div className="footer-links">
+          <a href="https://github.com/nuru484" className="source-code-link">
+            Source Code
+          </a>
         </div>
       </footer>
     </div>

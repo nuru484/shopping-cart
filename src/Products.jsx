@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { ProductCard, ProductCardDetails } from './ProductCard';
+import '../src/styles/products.css';
 
-const Products = () => {
+const Products = ({ numberOfItems }) => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -11,7 +12,7 @@ const Products = () => {
     const fetchProducts = async () => {
       try {
         const response = await fetch(
-          'https://fakestoreapi.com/products?limit=5'
+          `https://fakestoreapi.com/products?limit=${numberOfItems}`
         );
         if (!response.ok) {
           throw new Error('Something went wrong!');
@@ -26,22 +27,27 @@ const Products = () => {
     };
 
     fetchProducts();
-  }, []);
+  });
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
+  if (isLoading) return <div className="loading">Loading...</div>;
+  if (error) return <div className="error-message">Error: {error}</div>;
 
   return selectedProduct ? (
-    <div>
+    <>
       <ProductCardDetails product={selectedProduct} />
-      <button onClick={() => setSelectedProduct(null)}>Back to list</button>
-    </div>
+      <button className="back-button" onClick={() => setSelectedProduct(null)}>
+        Back to list
+      </button>
+    </>
   ) : (
-    <div>
-      <h1>Products</h1>
-      <ul>
+    <div className="product-list">
+      <ul className="products">
         {products.map((product) => (
-          <li key={product.id} onClick={() => setSelectedProduct(product)}>
+          <li
+            key={product.id}
+            className="product-item"
+            onClick={() => setSelectedProduct(product)}
+          >
             <ProductCard product={product} />
           </li>
         ))}
