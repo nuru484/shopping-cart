@@ -19,6 +19,9 @@
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-size: 1.2rem;
 }
+.nav-list .logo:hover {
+  cursor: pointer;
+}
 
 .nav-item {
   display: inline-block;
@@ -28,6 +31,11 @@
 .search-box {
   padding: 5px;
   border-radius: 8px;
+  background-image: url('../src/assets/icons8-search-50.png');
+  background-position: 5px center;
+  background-repeat: no-repeat;
+  background-size: 20px;
+  padding-left: 30px;
 }
 
 .nav-link {
@@ -61,11 +69,11 @@
 }
 
 .shop-button {
+  text-decoration: none;
   background-color: green;
   color: white;
   padding: 10px 20px;
   margin: 1rem;
-  border: none;
   cursor: pointer;
 }
 .shop-main {
@@ -79,10 +87,13 @@
 }
 
 .main-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: #222;
   color: white;
   text-align: center;
-  padding: 1rem;
+  padding: 1rem 3rem;
   position: fixed;
   left: 0;
   bottom: 0;
