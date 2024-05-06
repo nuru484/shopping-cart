@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
+import { useSearch } from './SearchContext';
 
 const NavBar = () => {
+  const { setSearchTerm } = useSearch();
+
   return (
     <>
       <nav className="main-nav">
@@ -13,6 +16,7 @@ const NavBar = () => {
               id="search-input"
               className="search-box"
               placeholder="Search products..."
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
           </li>
           <div>
