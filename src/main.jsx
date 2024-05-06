@@ -6,6 +6,7 @@ import './index.css';
 import Homepage from './Homepage.jsx';
 import ShoppingPage from './ShoppingPage.jsx';
 import ErrorPage from './ErrorPage.jsx';
+import CartPage from './CartPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
   {
     path: 'shopping-page',
     element: <ShoppingPage />,
+  },
+  {
+    path: 'cart-page',
+    element: <CartPage />,
   },
 ]);
 
