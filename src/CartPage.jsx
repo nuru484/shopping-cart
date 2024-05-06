@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import NavBar from './NavBar';
+import Footer from './Footer';
+import '../src/styles/cartPage.css';
 
 const CartPage = () => {
   const [cartItems, setCartItems] = useState({});
@@ -44,6 +46,10 @@ const CartPage = () => {
             </div>
           </li>
         ))}
+        <div className="checkout-details">
+          <div>Total Amount: $124</div>
+          <button className="checkout-button">CheckOut</button>
+        </div>
       </ul>
     ) : (
       <p>Your cart is empty.</p>
@@ -53,10 +59,12 @@ const CartPage = () => {
   return (
     <>
       <NavBar />
-      <div className="cart-container">
-        <h2>Your Shopping Cart</h2>
-        {renderCartItems()}
-      </div>
+      <main>
+        <div className="cart-container">
+          <h2>Items in Cart</h2>
+          {renderCartItems()}
+        </div>
+      </main>
     </>
   );
 };
