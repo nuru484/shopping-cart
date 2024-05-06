@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import FetchProducts from './FetchProduct';
+import DisplayProducts from './DisplayProducts';
 import NavBar from './NavBar';
 import '../src/styles/homepage.css';
 import Footer from './Footer';
@@ -22,7 +22,7 @@ const Homepage = () => {
         </Link>
         <div className="featured-items">
           <h1 id="product-list-heading">Featured Items</h1>
-          <FetchProducts numberOfItems={4} />
+          <DisplayProducts numberOfItems={4} />
         </div>
       </main>
       <Footer />

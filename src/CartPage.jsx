@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import NavBar from './NavBar';
-import Footer from './Footer';
 import '../src/styles/cartPage.css';
 
 const CartPage = () => {

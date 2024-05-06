@@ -1,4 +1,4 @@
-import FetchProducts from './FetchProduct';
+import DisplayProducts from './DisplayProducts';
 import Footer from './Footer';
 import NavBar from './NavBar';
 
@@ -7,7 +7,7 @@ const ShoppingPage = () => {
     <div>
       <NavBar />
       <main className="shop-main">
-        <FetchProducts />
+        <DisplayProducts />
       </main>
       <Footer />
     </div>
