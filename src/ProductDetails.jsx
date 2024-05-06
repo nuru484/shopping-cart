@@ -1,26 +1,32 @@
 import { useState } from 'react';
 import '../src/styles/productCard.css';
 
-const ProductCard = ({ product }) => {
-  return (
-    <div className="product-card" id={`product-card-${product.id}`}>
-      <span>
-        <img
-          src={product.image}
-          alt={product.description}
-          width="100px"
-          className="product-image"
-        />
-      </span>
+const ProductDetails = ({ product }) => {
+  const [initialInputValue, setInitialInputValue] = useState(1);
 
-      <h1 className="product-title">{product.title}</h1>
-      <p className="product-price">${product.price}</p>
-    </div>
-  );
-};
+  const handleInputValueChange = (event) => {
+    setInitialInputValue(parseInt(event.target.value, 10) || 0);
+  };
 
-const ProductCardDetails = ({ product }) => {
-  const [initialInputValue, setInitialInputValue] = useState(0);
+  const addToCart = () => {
+    const cart = JSON.parse(localStorage.getItem('cart')) || {};
+    const productID = product.id.toString();
+
+    if (cart[productID]) {
+      cart[productID].quantity += initialInputValue;
+    } else {
+      cart[productID] = {
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        image: product.image,
+        description: product.description,
+        quantity: initialInputValue,
+      };
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+  };
 
   return (
     <div className="product-details" id={`product-details-${product.id}`}>
@@ -40,7 +46,7 @@ const ProductCardDetails = ({ product }) => {
             className="quantity-decrease"
             onClick={() => {
               setInitialInputValue((prevValue) =>
-                prevValue > 0 ? prevValue - 1 : prevValue
+                prevValue > 1 ? prevValue - 1 : prevValue
               );
             }}
           >
@@ -49,13 +55,10 @@ const ProductCardDetails = ({ product }) => {
           <input
             type="text"
             name="counter"
-            min="0"
-            max="10"
             value={initialInputValue}
-            step="1"
+            onChange={handleInputValueChange}
             className="quantity-input"
           />
-
           <button
             className="quantity-increase"
             onClick={() => {
@@ -65,10 +68,12 @@ const ProductCardDetails = ({ product }) => {
             Increase
           </button>
         </div>
-        <button className="add-to-cart">Add To Cart</button>
+        <button className="add-to-cart" onClick={addToCart}>
+          Add To Cart
+        </button>
       </div>
     </div>
   );
 };
 
-export { ProductCard, ProductCardDetails };
+export { ProductDetails };

@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { ProductCard, ProductCardDetails } from './ProductCard';
+import { ProductDetails } from './ProductDetails';
+import Product from './Product';
 import '../src/styles/products.css';
 
-const Products = ({ numberOfItems }) => {
+const FetchProducts = ({ numberOfItems }) => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -28,13 +29,12 @@ const Products = ({ numberOfItems }) => {
 
     fetchProducts();
   });
-
   if (isLoading) return <div className="loading">Loading...</div>;
   if (error) return <div className="error-message">Error: {error}</div>;
 
   return selectedProduct ? (
     <>
-      <ProductCardDetails product={selectedProduct} />
+      <ProductDetails product={selectedProduct} />
       <button className="back-button" onClick={() => setSelectedProduct(null)}>
         Back to list
       </button>
@@ -48,7 +48,7 @@ const Products = ({ numberOfItems }) => {
             className="product-item"
             onClick={() => setSelectedProduct(product)}
           >
-            <ProductCard product={product} />
+            <Product product={product} />
           </li>
         ))}
       </ul>
@@ -56,4 +56,4 @@ const Products = ({ numberOfItems }) => {
   );
 };
 
-export default Products;
+export default FetchProducts;

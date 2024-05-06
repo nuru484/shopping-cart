@@ -1,46 +1,61 @@
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import NavBar from './NavBar';
 
 const CartPage = () => {
+  const [cartItems, setCartItems] = useState({});
+
+  useEffect(() => {
+    loadCartItems();
+  }, []);
+
+  const loadCartItems = () => {
+    const items = JSON.parse(localStorage.getItem('cart')) || {};
+    setCartItems(items);
+  };
+
+  const handleRemoveItem = (id) => {
+    let updatedCart = { ...cartItems };
+    delete updatedCart[id];
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+    setCartItems(updatedCart);
+  };
+
+  const renderCartItems = () => {
+    return Object.keys(cartItems).length > 0 ? (
+      <ul className="cart-items-list">
+        {Object.values(cartItems).map((item) => (
+          <li key={item.id} className="cart-item">
+            <img
+              src={item.image}
+              alt={item.description}
+              className="cart-item-image"
+              width="100"
+            />
+            <div className="cart-item-details">
+              <h4>{item.title}</h4>
+              <p>Price: ${item.price}</p>
+              <p>Quantity: {item.quantity}</p>
+              <button
+                className="remove-item-btn"
+                onClick={() => handleRemoveItem(item.id)}
+              >
+                Remove
+              </button>
+            </div>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p>Your cart is empty.</p>
+    );
+  };
+
   return (
     <>
-      <nav className="main-nav">
-        <ul className="nav-list">
-          <li className="nav-item logo">SHOPTEST</li>
-          <li className="nav-item">
-            <input
-              type="search"
-              name="search"
-              id="search-input"
-              className="search-box"
-              placeholder="Search products..."
-            />
-          </li>
-          <div>
-            <li className="nav-item">
-              <Link to={'/'} className="nav-link">
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to={'/shopping-page'} className="nav-link">
-                Shop
-              </Link>
-            </li>
-            <li className="nav-item cart">
-              <Link to={'/cart-page'}>
-                <img
-                  src="../src/assets/icons8-cart-50.png"
-                  alt="cart icon"
-                  width={'30px'}
-                />
-              </Link>
-            </li>
-          </div>
-        </ul>
-      </nav>
-
-      <div>
-        <h1>No items in Cart</h1>
+      <NavBar />
+      <div className="cart-container">
+        <h2>Your Shopping Cart</h2>
+        {renderCartItems()}
       </div>
     </>
   );
