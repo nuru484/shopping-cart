@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useSearch } from './SearchContext';
 
+import cartIcon from '/src/assets/icons8-cart-50.png';
+
 const NavBar = () => {
   const { setSearchTerm } = useSearch();
 
@@ -32,11 +34,7 @@ const NavBar = () => {
             </li>
             <li className="nav-item cart">
               <Link to={'/cart-page'}>
-                <img
-                  src="/src/assets/icons8-cart-50.png"
-                  alt="cart icon"
-                  width={'30px'}
-                />
+                <img src={cartIcon} alt="cart icon" width={'30px'} />
               </Link>
             </li>
           </div>
