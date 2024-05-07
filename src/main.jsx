@@ -7,6 +7,7 @@ import Homepage from './Homepage.jsx';
 import ShoppingPage from './ShoppingPage.jsx';
 import ErrorPage from './ErrorPage.jsx';
 import CartPage from './CartPage.jsx';
+import '../src/styles/index.css';
 
 const router = createBrowserRouter([
   {
