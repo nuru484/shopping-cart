@@ -1,3 +1,4 @@
+import githubIcon from '/src/assets/icons8-github-24.png';
 const Footer = () => {
   return (
     <>
@@ -8,11 +9,7 @@ const Footer = () => {
         </div>
         <div className="footer-links">
           <a href="https://github.com/nuru484" className="source-code-link">
-            <img
-              src="../src/assets/icons8-github-24.png"
-              alt="github icon"
-              width={'25px'}
-            />
+            <img src={githubIcon} alt="github icon" width={'25px'} />
           </a>
         </div>
       </footer>

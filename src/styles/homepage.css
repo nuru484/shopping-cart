@@ -31,7 +31,7 @@
 .search-box {
   padding: 5px;
   border-radius: 8px;
-  background-image: url('../src/assets/icons8-search-50.png');
+  background-image: url('/src/assets/icons8-search-50.png');
   background-position: 5px center;
   background-repeat: no-repeat;
   background-size: 20px;
