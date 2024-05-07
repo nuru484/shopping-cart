@@ -33,7 +33,7 @@ const NavBar = () => {
             <li className="nav-item cart">
               <Link to={'/cart-page'}>
                 <img
-                  src="src/assets/icons8-cart-50.png"
+                  src="/src/assets/icons8-cart-50.png"
                   alt="cart icon"
                   width={'30px'}
                 />
